@@ -31,4 +31,12 @@ public class SportService {
         return new SportDTO(entity);
     }
 
+    @Transactional
+    public SportDTO insert(SportDTO dto) {
+        Sport entity = new Sport();
+        entity.setDescription(dto.getDescription());
+        entity = repository.save(entity);
+        return new SportDTO(entity);
+    }
+
 }
