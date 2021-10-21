@@ -1,7 +1,6 @@
 package com.rqguzman.sportsclub.controllers;
 
 import com.rqguzman.sportsclub.dto.SportDTO;
-import com.rqguzman.sportsclub.entities.Sport;
 import com.rqguzman.sportsclub.services.SportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +43,12 @@ public class SportController {
     public ResponseEntity<SportDTO> update(@PathVariable Long id, @RequestBody SportDTO dto) {
         dto = service.update(id, dto);
         return ResponseEntity.ok().body(dto);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> update(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
