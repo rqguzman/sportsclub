@@ -2,10 +2,13 @@ package com.rqguzman.sportsclub.dto;
 
 import com.rqguzman.sportsclub.entities.Sport;
 
+import javax.validation.constraints.NotBlank;
+
 public class SportDTO {
 
     private Long id;
 
+    @NotBlank(message = "this field is required")
     private String description;
 
     public SportDTO() {
