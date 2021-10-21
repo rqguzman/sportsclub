@@ -40,4 +40,10 @@ public class SportController {
         return ResponseEntity.created(uri).body(dto);
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<SportDTO> update(@PathVariable Long id, @RequestBody SportDTO dto) {
+        dto = service.update(id, dto);
+        return ResponseEntity.ok().body(dto);
+    }
+
 }

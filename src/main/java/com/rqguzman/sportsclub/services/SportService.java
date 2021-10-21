@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,6 +38,18 @@ public class SportService {
         entity.setDescription(dto.getDescription());
         entity = repository.save(entity);
         return new SportDTO(entity);
+    }
+
+    @Transactional
+    public SportDTO update(Long id, SportDTO dto) {
+        try {
+            Sport entity = repository.getOne(id);
+            entity.setDescription(dto.getDescription());
+            entity = repository.save(entity);
+            return new SportDTO(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Id " + id + "not found");
+        }
     }
 
 }
