@@ -3,8 +3,11 @@ package com.rqguzman.sportsclub.dto;
 import com.rqguzman.sportsclub.entities.Sport;
 
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
-public class SportDTO {
+public class SportDTO implements Serializable {
+
+    private static final long serialVersionUID = -8727734186561087408L;
 
     private Long id;
 
